@@ -1,0 +1,90 @@
+<div class="container mt-5 col-6">
+  <h2>Employee Information Form</h2>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" formControlName="firstName">
+      <div *ngIf="employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched" class="text-danger">
+        First Name is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" formControlName="lastName">
+      <div *ngIf="employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched" class="text-danger">
+        Last Name is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" formControlName="email">
+      <div *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched" class="text-danger">
+        Enter a valid email.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="text" class="form-control" id="phone" formControlName="phone">
+      <div *ngIf="employeeForm.get('phone')?.invalid && employeeForm.get('phone')?.touched" class="text-danger">
+        Enter a valid 10-digit phone number.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <textarea class="form-control" id="address" formControlName="address"></textarea>
+      <div *ngIf="employeeForm.get('address')?.invalid && employeeForm.get('address')?.touched" class="text-danger">
+        Address is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="position">Position</label>
+      <select class="form-control" id="position" formControlName="position">
+        <option value="" disabled>Select Position</option>
+        <option value="Manager">Manager</option>
+        <option value="Developer">Developer</option>
+        <option value="Designer">Designer</option>
+        <option value="HR">HR</option>
+      </select>
+      <div *ngIf="employeeForm.get('position')?.invalid && employeeForm.get('position')?.touched" class="text-danger">
+        Position is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="dateOfJoining">Date of Joining</label>
+      <input type="date" class="form-control" id="dateOfJoining" formControlName="dateOfJoining">
+      <div *ngIf="employeeForm.get('dateOfJoining')?.invalid && employeeForm.get('dateOfJoining')?.touched" class="text-danger">
+        Date of Joining is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+  </form>
+
+  <div class="mt-5" *ngIf="submittedData.length > 0">
+    <h3>Submitted Data</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Address</th>
+          <th>Position</th>
+          <th>Date of Joining</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of submittedData">
+          <td>{{ data.firstName }}</td>
+          <td>{{ data.lastName }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.phone }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.position }}</td>
+          <td>{{ data.dateOfJoining }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

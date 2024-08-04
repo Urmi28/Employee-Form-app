@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+.bg-beige {
+  background-color: beige !important;
+}
+
+.bg-primary {
+  background-color: blue !important;
+}
+
+.bg-success {
+  background-color: green !important;
+}
+
+.bg-danger {
+  background-color: red !important;
+}
